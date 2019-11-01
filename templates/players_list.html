@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+{% extends "base.html" %}
+
+{% block navigation %}
+
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>Их нужно знать в лицо!</h2>
+
+<div class="inline-blocks col-sm-12 col-xs-12">
+    {% for player in players %}
+    <div class="ui card">
+
+        <div class="image card1">
+            <img src="../static/photos/{{ player.id }}.jpg">
+        </div>
+        <div class="content">
+            <a class="header">{{ player.name }}</a>
+            <div class="meta">
+                <span class="date">{{ player.amplua }}</span>
+            </div>
+            <div class="description">
+                Скорость: {{ player.speed }}
+            </div>
+            <div class="description">
+                Выносливость: {{ player.stamina }}
+            </div>
+            <div class="description">
+                Пас: {{ player.passing }}
+            </div>
+            <div class="description">
+                Удар: {{ player.shot }}
+            </div>
+            <div class="description">
+                Командность: {{ player.teamplay }}
+            </div>
+            <div class="description">
+                Навыки вратаря: {{ player.goalkeeping }}
+            </div>
+            <div class="description">
+                <div class="description">
+                    Среднее: {{ player.average_stats }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<div class="inline-blocks col-sm-12 col-xs-12">
+{% for sec_player in sec_players %}
+<div class="ui card">
+
+    <div class="image">
+        <img src="../static/photos/noname.jpg">
+    </div>
+    <div class="content">
+        <a class="header">{{ sec_player.name }}</a>
+        <div class="meta">
+            <span class="date">{{ sec_player.amplua }}</span>
+        </div>
+        <div class="description">
+            Скорость: {{ sec_player.speed }}
+        </div>
+        <div class="description">
+            Выносливость: {{ sec_player.stamina }}
+        </div>
+        <div class="description">
+            Пас: {{ sec_player.passing }}
+        </div>
+        <div class="description">
+            Удар: {{ sec_player.shot }}
+        </div>
+        <div class="description">
+            Командность: {{ sec_player.teamplay }}
+        </div>
+        <div class="description">
+            Навыки вратаря: {{ sec_player.goalkeeping }}
+        </div>
+        <div class="description">
+            <div class="description">
+                Среднее: {{ sec_player.average_stats }}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock %}
+
+{% block date %}
+<p>{{ year }}</p>
+{% endblock %}
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/photos/static.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='semantic/dist/semantic.min.css') }}">
+
+    {% extends "base.html" %}
+
+{% block navigation %}
+    {% include "menu.html" %}
+{% endblock %}
+
+    {% block result %}
+    <div class="background-img-block img-rounded">
+        <table width="100%" cellspacing="0" cellpadding="5">
+            {% block viewer %}
+            <div class="result-viewer">
+                <h2>Команды сформированы!</h2>
+            </div>
+            <div>
+                <td width="49%" valign="top">
+                    <h3 class="teams-result-viewer-left">Команда №1:</h3>
+                    {% for player in team1 %}
+                    <p class="players-result-viewer-left">{{ player.name }}</p>
+                    {% endfor %}
+                    <p class="average-stats-viewer-left">Общий показатель: {{team1_power}}</p>
+                </td>
+                <td valign="top">
+                    <h3 class="teams-result-viewer">Команда №2:</h3>
+                    {% for player in team2 %}
+                    <p class="players-result-viewer">{{ player.name }}</p>
+                    {% endfor %}
+                    <p class="average-stats-viewer">Общий показатель: {{team2_power}}</p>
+                    {% endblock %}
+                </td>
+            </div>
+        </table>
+    </div>
+    <div class="superbutton_2_left">
+
+        <button type="button" class="superbutton_2_left" onclick="location.href='/team_gen/'">К выбору игроков
+        </button>
+    </div>
+    <div class="superbutton_2_right">
+
+        <button type="button" class="superbutton_2_right" onclick="location.reload()">Альтернативный вариант
+        </button>
+    </div>
+    <div style="clear: both;"></div>
+    {% endblock %}
+
+
+    {% block date %}
+    <p>{{ year }}</p>
+    {% endblock %}
+
+</html>
